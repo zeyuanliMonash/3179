@@ -1,0 +1,100 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+    "width": 400,
+    "height": 200,
+
+    "mark": {
+      "type": "bar",
+      "stroke": "black"
+    },
+    "data": {
+      "url": "haha.csv"
+    },
+    "params": [
+      {
+        "name": "highlight",
+        "select": {
+          "on": "mouseover",
+          "type": "point"
+        }
+      },
+      {
+        "name": "select",
+        "select": "point"
+      },
+      {
+        "name": "Magnitude_Above",
+        "value": 6,
+        "bind": {
+          "input": "range",
+          "min": 6.5,
+          "max": 9,
+          "step": 0.5,
+          "name": "minimum magnitude"
+        }
+      }
+    ],
+    "transform": [
+      {
+        "filter": "datum.magnitude >= Magnitude_Above"
+      }
+    ],
+    "encoding": {
+      "y": {
+        "aggregate": "count",
+        
+        "type": "quantitative",
+        "title": "Sum of earthquakes happen"
+      },
+      "x": {
+        "field": "magnitude",
+        "bin": {
+          "step": 0.5
+        },
+        "type": "quantitative",
+        "title": "Magnitude Interval"
+      },
+      "color": {
+        "field": "magnitude",
+        "bin": {
+          "step": 0.5
+        },
+        "type": "ordinal",
+        "scale": {
+          "scheme": "reds"
+        },
+        "title": "Magnitude Interval"
+      },
+      "strokeWidth": {
+        "condition": [
+          {
+            "param": "highlight",
+            "empty": false,
+            "value": 1
+          },
+          {
+            "param": "select",
+            "empty": false,
+            "value": 2
+          }
+        ],
+        "value": 0
+      },
+      "fillOpacity":{
+        "condition":{
+          "param": "select",
+          "value":1
+        },
+        "value":0.3
+      },
+      "tooltip": [
+        {
+          "aggregate": "count",
+          "title": "The count of earthquake happens"
+        }
+  
+        
+      ]
+    }
+  }
+  

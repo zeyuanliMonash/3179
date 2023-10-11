@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CO2 Emissions by Country (2023)</title>
+    <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.2.0"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.20.8"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <!-- Add your styles here -->
+    <style>
+        /* Add your CSS styles here */
+        .text-container {
+            padding: 20px;
+        }
+        body{
+            background-color:#cfd2d5;
+        }
+        .top-title{
+            width: 100%;
+            height: 60px;
+            text-align: center;
+            line-height: 60px;
+            color: #333;
+            font-size: 32px;
+            background-color: #fff;
+            font-weight: bold;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 1px 1px 50px rgb(0 0 0 / 30%);
+        }
+        .echart-title{
+            height: 50px;
+            text-align: center;
+            line-height: 50px;
+            color: #333;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .map-box{
+            display: flex;
+            flex-flow: row nowrap;
+            
+        }
+        .container{
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+        }
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: 'Times New Roman', cursive; /* Updated font-family */
+        }
+      .vh-100 {
+          height: 100vh;
+          background-size: cover;
+          background-position: center;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+      }
+      .jumbotron {
+          background-color: transparent;
+          text-align: center;
+      }
+      .display-4 {
+          font-size: 5rem;
+          font-weight: bolder;
+          color: white;
+          text-shadow: 2px 2px 4px #000000; /* Added text shadow for better readability */
+      }
+      .lead {
+          font-size: 1.5rem;
+          font-weight: bolder;
+          color: white;
+          text-shadow: 1px 1px 2px #000000; /* Added text shadow for better readability */
+      }
+      .my-4 {
+          margin-top: 20px;
+          margin-bottom: 20px;
+          border: 1px solid white;
+          width: 50%;
+      }
+    </style>
+</head>
+
+<body>
+
+   
+    <body>
+        <div class="vh-100" style="background-image: url(https://img.freepik.com/free-photo/broken-road-separating-into-two-parts-by-earthquake-city-ai-generative_123827-23739.jpg);">
+          <div class="jumbotron">
+              <h1 class="display-4">"Seismic Explorer: Visual Analysis of Global Earthquake Data from 2000-2022"</h1>
+              <p class="lead">The data is sourced from Kaggle and processed to be visualized on this platform.</p>
+         
+              
+          </div>
+      </div>
+      </body>
+   
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 echart-title">
+                Global Earthquake Distribution Map
+            </div>
+            <div class="col-12 map-box">
+                <!-- Chart will be inserted here -->
+                <div id="map"></div>
+                <script type="text/javascript">
+                    var spec10 = "/map.json"; // Make sure this path is correct
+                    vegaEmbed('#map', spec10).then(function (result) {
+                        // Access the Vega view instance as result.view
+                    }).catch(console.error);
+                </script>
+                <h5>
+                    "This interactive map displays the distribution of earthquakes around the world. Each circle on the map represents an earthquake event, with its color indicating the earthquake's magnitude. The map also highlights the top five deepest earthquakes, providing insights into their magnitude, depth, and location."
+                </h5>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 echart-title">
+                Count of Earthquakes for Different Magnitudes
+            </div>
+            <div class="col-12 map-box">
+                
+            <div id="barchart"></div> <!-- Fixed the div id here -->
+            <script type="text/javascript">
+                var spec11 = "/barchart.json"; // Ensure this path is correct
+                vegaEmbed('#barchart', spec11).then(function (result) { <!-- Fixed the id here -->
+                    // Handle the result for the second chart here
+                }).catch(console.error);
+            </script>
+              <h5>
+                "Engage with the data through this bar chart that showcases the count of earthquakes for different magnitude intervals. The chart provides an interactive experience, allowing users to filter the data displayed based on a selected minimum magnitude. The color-coded bars represent different magnitude intervals, making it easy to identify and analyze the distribution and frequency of earthquake occurrences of varying strengths. For detailed counts for each interval,  just simply hover over the bars."
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 echart-title">
+                Magnitude and Timing of Worldwide Earthquakes
+            </div>
+            <div class="col-12 map-box">
+                <h5>
+                    "Visualize the timing and magnitude of earthquakes across the globe. Each point on the chart represents an earthquake event, with its position indicating the time of occurrence and magnitude. Filter options are available to focus on earthquakes above a certain magnitude."
+                </h5>
+                <!-- Chart will be inserted here -->
+                <div id="scatter"></div>
+                <script type="text/javascript">
+                    var spec9 = "/scatter.json"; // Make sure this path is correct
+                    vegaEmbed('#scatter', spec9).then(function (result) {
+                        // Access the Vega view instance as result.view
+                    }).catch(console.error);
+                </script>
+                
+            </div>
+        </div>
+    </div>
+
+    <div class="container mt-5">
+        <div class="row">
+            <div class="col-12 echart-title">
+                Earthquake Occurrences Over Years with Monthly Details stackchart
+            </div>
+            <div class="col-12 map-box">
+                <!-- Chart will be inserted here -->
+                <div id="stackchart"></div>
+                <script type="text/javascript">
+                    var spec = "/stackchart.json"; // Make sure this path is correct
+                    vegaEmbed('#stackchart', spec).then(function (result) {
+                        // Access the Vega view instance as result.view
+                    }).catch(console.error);
+                </script>
+                <h5>
+                    "Explore the number of earthquakes occurring each year, detailed by months, through this color-coded bar chart. The chart provides an intuitive understanding of earthquake patterns over time, offering insights into monthly variations within each year."
+                </h5>
+            </div>
+        </div>
+    </div>
+    
+<div class="container mt-5">
+          <div class="row">
+            <div class="col-12 echart-title">
+                Number of Earthquakes in Oceanic vs Non-Oceanic Regions
+            </div>
+            <div class="col-12 map-box">
+                
+                <h5>
+                    Check out our "Number of earthquakes in Ocean vs. Non-Ocean" pie chart!  This visually appealing pie chart showcases two distinct areas where earthquakes occur: Ocean and Non-Ocean.  The  blue segment represents the number of earthquakes in Ocean areas, while the green segment represents the number of earthquakes in Non-Ocean areas.
+                </h5>
+                <div id="piechat"></div> <!-- Fixed the div id here -->
+            <script type="text/javascript">
+                var spec2 = "/piechat.json"; // Ensure this path is correct
+                vegaEmbed('#piechat', spec2).then(function (result) { <!-- Fixed the id here -->
+                    // Handle the result for the second chart here
+                }).catch(console.error);
+            </script>
+              </div>
+            </div>
+</div>
+
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-12 echart-title">
+            Visual Overview of Earthquake Frequency and Magnitude Per Quarter
+        </div>
+        <div class="col-12 map-box">
+            
+        <div id="areachart"></div> <!-- Fixed the div id here -->
+        <script type="text/javascript">
+            var spec3 = "/areachart.json"; // Ensure this path is correct
+            vegaEmbed('#areachart', spec3).then(function (result) { <!-- Fixed the id here -->
+                // Handle the result for the second chart here
+            }).catch(console.error);
+        </script>
+          <h5>
+            "This area chart presents a count of earthquakes occurring each quarter, color-coded by the magnitude of earthquakes. The visualization provides an intuitive display of both the frequency and intensity of earthquakes over time. Select a time range in the lower chart to view details for specific quarters in the upper chart."
+        </div>
+    </div>
+</div>
+
+
+
+</div>
+</body>
+
+
+
+
+</html>
+
+
+
+
+<!-- //Check out our "Number of earthquakes in Ocean vs. Non-Ocean" pie chart!  This visually appealing pie chart showcases two distinct areas where earthquakes occur: Marine and non-marine.  The  blue segment represents the number of earthquakes in Marine areas, while the green segment represents the number of earthquakes in non-marine areas. -->

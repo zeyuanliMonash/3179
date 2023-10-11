@@ -1,0 +1,62 @@
+{
+    "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+
+    "data": {
+      "url": "./earthquake_data.csv"
+    },
+    "transform": [
+      {
+        "calculate": "datum.tsunami === '1' ? 'Oceanic' : 'Non-Oceanic'",
+        "as": "region_type"
+      },
+      {
+        "aggregate": [
+          {"op": "count", "as": "Number_of_Earthquakes"}
+        ],
+        "groupby": ["region_type"]
+      }
+    ],
+    "mark": {
+      "type": "arc",
+      "stroke": "black"
+    },
+    "params": [
+      {
+        "name": "select",
+        "select": "point"
+      }
+    ],
+    "encoding": {
+      "theta": {"field": "Number_of_Earthquakes", "type": "quantitative"},
+      "color": {
+        "field": "region_type", 
+        "type": "nominal", 
+        "scale": {
+            "domain": ["Non-Oceanic", "Oceanic"],
+            "range": ["#2deb1c", "#1c83eb"]
+          },
+        
+        "legend": {
+          "title": "Region Type"
+        }
+      },
+      "fillOpacity": {
+        "condition": {"param": "select", "value": 1},
+        "value": 0.3
+      },
+      "strokeWidth":{
+        "condition":{
+          "param": "select",
+          "empty": false,
+          "value":1
+        },
+        "value":0
+      
+      },
+      "tooltip": [
+        {"field": "region_type", "type": "nominal", "title": "Region Type"},
+        {"field": "Number_of_Earthquakes", "type": "quantitative", "title": "Number of Earthquakes"}
+      ]
+    }
+  }
+  

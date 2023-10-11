@@ -1,0 +1,81 @@
+{ "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+"width": 800,
+"height": 600,
+"data": {
+  "url": "earthquake_data.csv"
+},
+"params": [
+  {
+    "name": "Magnitude_Above",
+    "value": 5.5,
+    "bind": {
+      "input": "range",
+      "min": 5.5,
+      "max": 9.5,
+      "step": 0.1,
+      "name": " Display Earthquakes with Magnitude Above: "
+    }
+  },
+  {
+    "name": "show_all",
+    "value": false,
+    "bind": {
+      "input": "checkbox",
+      "name": "Show All"
+    }
+  }
+],
+"transform": [
+  {
+    "filter": "show_all || datum.magnitude >= Magnitude_Above"
+  }
+],
+"mark": {
+    "type": "point",
+    "filled": true
+  },
+
+"encoding": {
+    "y": {
+        "field": "data_time",
+        "type": "temporal",
+        "title": "Date and Time",
+        "scale": {
+          "domain": ["1999-01-01", "2023-12-31"]
+        }
+      },
+      
+  "x": {
+    "field": "magnitude",
+    "type": "quantitative",
+    "title": "Magnitude",
+    "scale": {
+        "domain": [6.4, 9.5]
+      }
+  },
+  "color": {
+    "field": "magnitude",
+    "type": "quantitative",
+    "scale": {
+        "domain": [6.7, 7, 8, 9, 9.5],
+        "range": ["#fdd0a2", "#f8b085", "#f16913", "#d94801", "#a63603", "#7f2704"]
+      },
+    "title": "Magnitude"
+  },
+  "size": {
+    "field": "magnitude",
+    "type": "quantitative",
+    "scale": {
+        "domain": [6, 9]
+      }
+  },
+  "tooltip": [
+    {"field": "title", "type": "nominal"},
+    {"field": "magnitude", "type": "quantitative"},
+    {"field": "depth", "type": "quantitative"},
+    {"field": "data_time", "type": "temporal"}
+  ]
+}
+        
+
+}

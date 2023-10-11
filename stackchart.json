@@ -1,0 +1,70 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "width": 800,
+  "height": 600,
+  "data": {
+    "url": "./earthquake_data.csv"
+  },
+  "title": "Monthly Earthquake Frequency by Magnitude",
+  "mark": {
+    "type": "bar",
+    "stroke":"black"
+  },
+  "params": [{
+    "name": "select",
+    "select":"point"
+  }],
+  "encoding": {
+    "x": {
+      "field": "data_time",
+      "timeUnit": "year",
+      "title": "year"
+    },
+    "y": {
+      "aggregate": "count",
+     
+      "title": "The count of earthquake",
+      "scale": {
+        "domain": [0, 55]
+      }
+    },
+    "color": {
+      "timeUnit": "month",
+      "field": "data_time",
+      "type": "ordinal",
+      "scale": {
+       
+        "scheme": "tableau20"
+      },
+      "title": "Year"
+    },
+    "tooltip": [
+      {
+        "aggregate": "count",
+        "title": "The count of earthquake happens"
+      },
+      {
+        "field": "data_time",
+      "timeUnit": "yearmonth",
+      "title": "The month of year"
+      }
+      
+    ],
+    "fillOpacity":{
+      "condition":{
+        "param": "select",
+        "value":1
+      },
+      "value":0.3
+    },
+    "strokeWidth":{
+      "condition":{
+        "param": "select",
+        "empty": false,
+        "value":1
+      },
+      "value":0
+    
+    }
+  }
+}
