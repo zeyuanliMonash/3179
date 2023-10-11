@@ -3,7 +3,7 @@
   "width": 800,
   "height": 600,
   "data": {
-    "url": "./earthquake_data.csv"
+    "url": "https://raw.githubusercontent.com/zeyuanliMonash/3179/main/earthquake_data.csv"
   },
   "title": "Monthly Earthquake Frequency by Magnitude",
   "mark": {
