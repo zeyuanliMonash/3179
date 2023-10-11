@@ -8,7 +8,7 @@
       "stroke": "black"
     },
     "data": {
-      "url": "haha.csv"
+      "url": "https://raw.githubusercontent.com/zeyuanliMonash/3179/main/earthquake_data.csv"
     },
     "params": [
       {
