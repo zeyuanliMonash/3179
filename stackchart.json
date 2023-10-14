@@ -41,7 +41,7 @@
     "tooltip": [
       {
         "aggregate": "count",
-        "title": "The count of earthquake happens"
+        "title": "The count of earthquake"
       },
       {
         "field": "data_time",
