@@ -38,7 +38,7 @@
           },
         
         "legend": {
-          "title": "Region Type"
+          "title": "Region"
         }
       },
       "fillOpacity": {
@@ -55,7 +55,7 @@
       
       },
       "tooltip": [
-        {"field": "region_type", "type": "nominal", "title": "Region Type"},
+        {"field": "region_type", "type": "nominal", "title": "Region"},
         {"field": "Number_of_Earthquakes", "type": "quantitative", "title": "Number of Earthquakes"}
       ]
     }
