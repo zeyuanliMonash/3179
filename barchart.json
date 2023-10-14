@@ -1,6 +1,6 @@
 {
     "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-    "width": 400,
+    "width": 500,
     "height": 200,
 
     "mark": {
@@ -44,7 +44,7 @@
         "aggregate": "count",
         
         "type": "quantitative",
-        "title": "Sum of earthquakes happen"
+        "title": "Count of earthquakes happen"
       },
       "x": {
         "field": "magnitude",
@@ -52,7 +52,7 @@
           "step": 0.5
         },
         "type": "quantitative",
-        "title": "Magnitude Interval"
+        "title": "Magnitude "
       },
       "color": {
         "field": "magnitude",
