@@ -2,44 +2,38 @@
 "width": 800,
 "height": 600,
 "data": {
-  "url": "https://raw.githubusercontent.com/zeyuanliMonash/3179/main/earthquake_data.csv"
+  "url": "earthquake_data.csv"
 },
 "params": [
   {
     "name": "Magnitude_Above",
-    "value": 5.5,
+    "value": 6.5,
     "bind": {
       "input": "range",
-      "min": 5.5,
-      "max": 9.5,
+      "min": 6.5,
+      "max": 9.2,
       "step": 0.1,
       "name": " Display Earthquakes with Magnitude Above: "
     }
-  },
-  {
-    "name": "show_all",
-    "value": false,
-    "bind": {
-      "input": "checkbox",
-      "name": "Show All"
-    }
   }
+ 
 ],
 "transform": [
   {
-    "filter": "show_all || datum.magnitude >= Magnitude_Above"
+    "filter": " datum.magnitude >= Magnitude_Above"
   }
 ],
 "mark": {
     "type": "point",
-    "filled": true
+    "filled": true,
+    "size": 250
   },
 
 "encoding": {
     "y": {
         "field": "data_time",
         "type": "temporal",
-        "title": "Date and Time",
+        "title": "Year",
         "scale": {
           "domain": ["1999-01-01", "2023-12-31"]
         }
@@ -50,30 +44,24 @@
     "type": "quantitative",
     "title": "Magnitude",
     "scale": {
-        "domain": [6.4, 9.5]
+        "domain": [6.4, 9.2]
       }
   },
   "color": {
     "field": "magnitude",
     "type": "quantitative",
     "scale": {
-        "domain": [6.7, 7, 8, 9, 9.5],
+        "domain": [6.5, 7, 7.5, 8, 8.5,9],
         "range": ["#fdd0a2", "#f8b085", "#f16913", "#d94801", "#a63603", "#7f2704"]
       },
     "title": "Magnitude"
   },
-  "size": {
-    "field": "magnitude",
-    "type": "quantitative",
-    "scale": {
-        "domain": [6, 9]
-      }
-  },
+ 
   "tooltip": [
     {"field": "title", "type": "nominal"},
-    {"field": "magnitude", "type": "quantitative"},
-    {"field": "depth", "type": "quantitative"},
-    {"field": "data_time", "type": "temporal"}
+    {"field": "magnitude", "type": "quantitative", "title": "Magnitude"},
+    {"field": "depth", "type": "quantitative", "title": "Depth"},
+    {"field": "data_time", "type": "temporal", "title": "Date_time"}
   ]
 }
         
