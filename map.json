@@ -157,7 +157,7 @@
     {
       "field": "title",
       "type": "nominal",
-      "title": "Earthquake Title"
+      "title": "Top Earthquake Name"
     },
     {
       "field": "magnitude",
