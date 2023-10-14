@@ -46,7 +46,7 @@
 },
 "mark": {
   "type": "geoshape",
-  "fill": "seagreen"
+  "fill": "gray"
 }
 },
 {
@@ -92,12 +92,12 @@
     {
       "field": "magnitude",
       "type": "quantitative",
-      "title": "magnitude"
+      "title": "Magnitude"
     },
     {
       "field": "depth",
       "type": "quantitative",
-      "title": "The depth where the earthquake begins to rupture km"
+      "title": "The depth km"
     },
     {
       "field": "data_time",
